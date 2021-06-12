@@ -8,6 +8,7 @@ pip install ply
 ## Usage
 
 Crear un archivo llamado file.txt, en este se va a poner nuestro codigo.
+
 python program.py
 
 Con esto se generara el codigo de 3 direcciones.
