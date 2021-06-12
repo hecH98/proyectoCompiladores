@@ -1,0 +1,3335 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> inicio
+Rule 1     inicio -> statement
+Rule 2     null -> <empty>
+Rule 3     statement -> condicional statement
+Rule 4     statement -> loop_while statement
+Rule 5     statement -> loop_for statement
+Rule 6     statement -> asignacion FINAL statement
+Rule 7     statement -> log FINAL statement
+Rule 8     statement -> null
+Rule 9     condicional -> if_def elseif_def else_def
+Rule 10    if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+Rule 11    elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def
+Rule 12    elseif_def -> null
+Rule 13    else_def -> ELSE LLAVIZ statement LLAVDER
+Rule 14    else_def -> null
+Rule 15    loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+Rule 16    loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+Rule 17    loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+Rule 18    tipo -> INT
+Rule 19    tipo -> FLOAT
+Rule 20    tipo -> STRING
+Rule 21    tipo -> BOOL
+Rule 22    log -> LOG expression
+Rule 23    asignacion -> declarar
+Rule 24    asignacion -> declarar-asignar
+Rule 25    asignacion -> guardar
+Rule 26    declarar -> tipo VALORID
+Rule 27    guardar -> VALORID VALORIGUAL expression
+Rule 28    declarar-asignar -> tipo VALORID VALORIGUAL expression
+Rule 29    expression -> VALORINT
+Rule 30    expression -> VALORFLOAT
+Rule 31    expression -> VALORCADENA
+Rule 32    expression -> valorbool
+Rule 33    expression -> PARIZ expression PARDER
+Rule 34    expression -> VALORID
+Rule 35    valorbool -> TRUE
+Rule 36    valorbool -> FALSE
+Rule 37    expression -> VALORRESTA expression
+Rule 38    expression -> expression VALORSUMA expression
+Rule 39    expression -> expression VALORRESTA expression
+Rule 40    expression -> expression VALORMULT expression
+Rule 41    expression -> expression VALORDIV expression
+Rule 42    expression -> expression VALOREXP expression
+Rule 43    expression -> expression VALOREQUIV expression
+Rule 44    expression -> expression VALORNOEQUIV expression
+Rule 45    expression -> expression VALORMENOR expression
+Rule 46    expression -> expression VALORMEOI expression
+Rule 47    expression -> expression VALORMAYOR expression
+Rule 48    expression -> expression VALORMAOI expression
+Rule 49    expression -> expression AND expression
+Rule 50    expression -> expression OR expression
+
+Terminals, with rules where they appear
+
+AND                  : 49
+BOOL                 : 21
+DO                   : 16
+ELSE                 : 13
+ELSEIF               : 11
+FALSE                : 36
+FINAL                : 6 7 16 17 17
+FLOAT                : 19
+FOR                  : 17
+IF                   : 10
+INT                  : 18
+LLAVDER              : 10 11 13 15 16 17
+LLAVIZ               : 10 11 13 15 16 17
+LOG                  : 22
+OR                   : 50
+PARDER               : 10 11 15 16 17 33
+PARIZ                : 10 11 15 16 17 33
+STRING               : 20
+TRUE                 : 35
+VALORCADENA          : 31
+VALORDIV             : 41
+VALOREQUIV           : 43
+VALOREXP             : 42
+VALORFLOAT           : 30
+VALORID              : 26 27 28 34
+VALORIGUAL           : 27 28
+VALORINT             : 29
+VALORMAOI            : 48
+VALORMAYOR           : 47
+VALORMENOR           : 45
+VALORMEOI            : 46
+VALORMULT            : 40
+VALORNOEQUIV         : 44
+VALORRESTA           : 37 39
+VALORSUMA            : 38
+WHILE                : 15 16
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 6
+condicional          : 3
+declarar             : 23
+declarar-asignar     : 17 24
+else_def             : 9
+elseif_def           : 9 11
+expression           : 10 11 15 16 17 22 27 28 33 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47 48 48 49 49 50 50
+guardar              : 17 25
+if_def               : 9
+inicio               : 0
+log                  : 7
+loop_for             : 5
+loop_while           : 4
+null                 : 8 12 14
+statement            : 1 3 4 5 6 7 10 11 13 15 16 17
+tipo                 : 26 28
+valorbool            : 32
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . inicio
+    (1) inicio -> . statement
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    $end            reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    inicio                         shift and go to state 1
+    statement                      shift and go to state 2
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 1
+
+    (0) S' -> inicio .
+
+
+
+state 2
+
+    (1) inicio -> statement .
+
+    $end            reduce using rule 1 (inicio -> statement .)
+
+
+state 3
+
+    (3) statement -> condicional . statement
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    $end            reduce using rule 2 (null -> .)
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    condicional                    shift and go to state 3
+    statement                      shift and go to state 24
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 4
+
+    (4) statement -> loop_while . statement
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    $end            reduce using rule 2 (null -> .)
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    loop_while                     shift and go to state 4
+    statement                      shift and go to state 25
+    condicional                    shift and go to state 3
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 5
+
+    (5) statement -> loop_for . statement
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    $end            reduce using rule 2 (null -> .)
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    loop_for                       shift and go to state 5
+    statement                      shift and go to state 26
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 6
+
+    (6) statement -> asignacion . FINAL statement
+
+    FINAL           shift and go to state 27
+
+
+state 7
+
+    (7) statement -> log . FINAL statement
+
+    FINAL           shift and go to state 28
+
+
+state 8
+
+    (8) statement -> null .
+
+    $end            reduce using rule 8 (statement -> null .)
+    LLAVDER         reduce using rule 8 (statement -> null .)
+
+
+state 9
+
+    (9) condicional -> if_def . elseif_def else_def
+    (11) elseif_def -> . ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def
+    (12) elseif_def -> . null
+    (2) null -> .
+
+    ELSEIF          shift and go to state 30
+    ELSE            reduce using rule 2 (null -> .)
+    WHILE           reduce using rule 2 (null -> .)
+    DO              reduce using rule 2 (null -> .)
+    FOR             reduce using rule 2 (null -> .)
+    LOG             reduce using rule 2 (null -> .)
+    IF              reduce using rule 2 (null -> .)
+    VALORID         reduce using rule 2 (null -> .)
+    INT             reduce using rule 2 (null -> .)
+    FLOAT           reduce using rule 2 (null -> .)
+    STRING          reduce using rule 2 (null -> .)
+    BOOL            reduce using rule 2 (null -> .)
+    $end            reduce using rule 2 (null -> .)
+    LLAVDER         reduce using rule 2 (null -> .)
+
+    elseif_def                     shift and go to state 29
+    null                           shift and go to state 31
+
+state 10
+
+    (15) loop_while -> WHILE . PARIZ expression PARDER LLAVIZ statement LLAVDER
+
+    PARIZ           shift and go to state 32
+
+
+state 11
+
+    (16) loop_while -> DO . LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+
+    LLAVIZ          shift and go to state 33
+
+
+state 12
+
+    (17) loop_for -> FOR . PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+
+    PARIZ           shift and go to state 34
+
+
+state 13
+
+    (24) asignacion -> declarar-asignar .
+
+    FINAL           reduce using rule 24 (asignacion -> declarar-asignar .)
+
+
+state 14
+
+    (25) asignacion -> guardar .
+
+    FINAL           reduce using rule 25 (asignacion -> guardar .)
+
+
+state 15
+
+    (23) asignacion -> declarar .
+
+    FINAL           reduce using rule 23 (asignacion -> declarar .)
+
+
+state 16
+
+    (22) log -> LOG . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 35
+    valorbool                      shift and go to state 39
+
+state 17
+
+    (10) if_def -> IF . PARIZ expression PARDER LLAVIZ statement LLAVDER
+
+    PARIZ           shift and go to state 45
+
+
+state 18
+
+    (26) declarar -> tipo . VALORID
+    (28) declarar-asignar -> tipo . VALORID VALORIGUAL expression
+
+    VALORID         shift and go to state 46
+
+
+state 19
+
+    (27) guardar -> VALORID . VALORIGUAL expression
+
+    VALORIGUAL      shift and go to state 47
+
+
+state 20
+
+    (18) tipo -> INT .
+
+    VALORID         reduce using rule 18 (tipo -> INT .)
+
+
+state 21
+
+    (19) tipo -> FLOAT .
+
+    VALORID         reduce using rule 19 (tipo -> FLOAT .)
+
+
+state 22
+
+    (20) tipo -> STRING .
+
+    VALORID         reduce using rule 20 (tipo -> STRING .)
+
+
+state 23
+
+    (21) tipo -> BOOL .
+
+    VALORID         reduce using rule 21 (tipo -> BOOL .)
+
+
+state 24
+
+    (3) statement -> condicional statement .
+
+    $end            reduce using rule 3 (statement -> condicional statement .)
+    LLAVDER         reduce using rule 3 (statement -> condicional statement .)
+
+
+state 25
+
+    (4) statement -> loop_while statement .
+
+    $end            reduce using rule 4 (statement -> loop_while statement .)
+    LLAVDER         reduce using rule 4 (statement -> loop_while statement .)
+
+
+state 26
+
+    (5) statement -> loop_for statement .
+
+    $end            reduce using rule 5 (statement -> loop_for statement .)
+    LLAVDER         reduce using rule 5 (statement -> loop_for statement .)
+
+
+state 27
+
+    (6) statement -> asignacion FINAL . statement
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    $end            reduce using rule 2 (null -> .)
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    asignacion                     shift and go to state 6
+    statement                      shift and go to state 48
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 28
+
+    (7) statement -> log FINAL . statement
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    $end            reduce using rule 2 (null -> .)
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    log                            shift and go to state 7
+    statement                      shift and go to state 49
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 29
+
+    (9) condicional -> if_def elseif_def . else_def
+    (13) else_def -> . ELSE LLAVIZ statement LLAVDER
+    (14) else_def -> . null
+    (2) null -> .
+
+    ELSE            shift and go to state 51
+    WHILE           reduce using rule 2 (null -> .)
+    DO              reduce using rule 2 (null -> .)
+    FOR             reduce using rule 2 (null -> .)
+    LOG             reduce using rule 2 (null -> .)
+    IF              reduce using rule 2 (null -> .)
+    VALORID         reduce using rule 2 (null -> .)
+    INT             reduce using rule 2 (null -> .)
+    FLOAT           reduce using rule 2 (null -> .)
+    STRING          reduce using rule 2 (null -> .)
+    BOOL            reduce using rule 2 (null -> .)
+    $end            reduce using rule 2 (null -> .)
+    LLAVDER         reduce using rule 2 (null -> .)
+
+    else_def                       shift and go to state 50
+    null                           shift and go to state 52
+
+state 30
+
+    (11) elseif_def -> ELSEIF . PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def
+
+    PARIZ           shift and go to state 53
+
+
+state 31
+
+    (12) elseif_def -> null .
+
+    ELSE            reduce using rule 12 (elseif_def -> null .)
+    WHILE           reduce using rule 12 (elseif_def -> null .)
+    DO              reduce using rule 12 (elseif_def -> null .)
+    FOR             reduce using rule 12 (elseif_def -> null .)
+    LOG             reduce using rule 12 (elseif_def -> null .)
+    IF              reduce using rule 12 (elseif_def -> null .)
+    VALORID         reduce using rule 12 (elseif_def -> null .)
+    INT             reduce using rule 12 (elseif_def -> null .)
+    FLOAT           reduce using rule 12 (elseif_def -> null .)
+    STRING          reduce using rule 12 (elseif_def -> null .)
+    BOOL            reduce using rule 12 (elseif_def -> null .)
+    $end            reduce using rule 12 (elseif_def -> null .)
+    LLAVDER         reduce using rule 12 (elseif_def -> null .)
+
+
+state 32
+
+    (15) loop_while -> WHILE PARIZ . expression PARDER LLAVIZ statement LLAVDER
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 54
+    valorbool                      shift and go to state 39
+
+state 33
+
+    (16) loop_while -> DO LLAVIZ . statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    statement                      shift and go to state 55
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 34
+
+    (17) loop_for -> FOR PARIZ . declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    declarar-asignar               shift and go to state 56
+    tipo                           shift and go to state 57
+
+state 35
+
+    (22) log -> LOG expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    FINAL           reduce using rule 22 (log -> LOG expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 36
+
+    (29) expression -> VALORINT .
+
+    VALORSUMA       reduce using rule 29 (expression -> VALORINT .)
+    VALORRESTA      reduce using rule 29 (expression -> VALORINT .)
+    VALORMULT       reduce using rule 29 (expression -> VALORINT .)
+    VALORDIV        reduce using rule 29 (expression -> VALORINT .)
+    VALOREXP        reduce using rule 29 (expression -> VALORINT .)
+    VALOREQUIV      reduce using rule 29 (expression -> VALORINT .)
+    VALORNOEQUIV    reduce using rule 29 (expression -> VALORINT .)
+    VALORMENOR      reduce using rule 29 (expression -> VALORINT .)
+    VALORMEOI       reduce using rule 29 (expression -> VALORINT .)
+    VALORMAYOR      reduce using rule 29 (expression -> VALORINT .)
+    VALORMAOI       reduce using rule 29 (expression -> VALORINT .)
+    AND             reduce using rule 29 (expression -> VALORINT .)
+    OR              reduce using rule 29 (expression -> VALORINT .)
+    FINAL           reduce using rule 29 (expression -> VALORINT .)
+    PARDER          reduce using rule 29 (expression -> VALORINT .)
+
+
+state 37
+
+    (30) expression -> VALORFLOAT .
+
+    VALORSUMA       reduce using rule 30 (expression -> VALORFLOAT .)
+    VALORRESTA      reduce using rule 30 (expression -> VALORFLOAT .)
+    VALORMULT       reduce using rule 30 (expression -> VALORFLOAT .)
+    VALORDIV        reduce using rule 30 (expression -> VALORFLOAT .)
+    VALOREXP        reduce using rule 30 (expression -> VALORFLOAT .)
+    VALOREQUIV      reduce using rule 30 (expression -> VALORFLOAT .)
+    VALORNOEQUIV    reduce using rule 30 (expression -> VALORFLOAT .)
+    VALORMENOR      reduce using rule 30 (expression -> VALORFLOAT .)
+    VALORMEOI       reduce using rule 30 (expression -> VALORFLOAT .)
+    VALORMAYOR      reduce using rule 30 (expression -> VALORFLOAT .)
+    VALORMAOI       reduce using rule 30 (expression -> VALORFLOAT .)
+    AND             reduce using rule 30 (expression -> VALORFLOAT .)
+    OR              reduce using rule 30 (expression -> VALORFLOAT .)
+    FINAL           reduce using rule 30 (expression -> VALORFLOAT .)
+    PARDER          reduce using rule 30 (expression -> VALORFLOAT .)
+
+
+state 38
+
+    (31) expression -> VALORCADENA .
+
+    VALORSUMA       reduce using rule 31 (expression -> VALORCADENA .)
+    VALORRESTA      reduce using rule 31 (expression -> VALORCADENA .)
+    VALORMULT       reduce using rule 31 (expression -> VALORCADENA .)
+    VALORDIV        reduce using rule 31 (expression -> VALORCADENA .)
+    VALOREXP        reduce using rule 31 (expression -> VALORCADENA .)
+    VALOREQUIV      reduce using rule 31 (expression -> VALORCADENA .)
+    VALORNOEQUIV    reduce using rule 31 (expression -> VALORCADENA .)
+    VALORMENOR      reduce using rule 31 (expression -> VALORCADENA .)
+    VALORMEOI       reduce using rule 31 (expression -> VALORCADENA .)
+    VALORMAYOR      reduce using rule 31 (expression -> VALORCADENA .)
+    VALORMAOI       reduce using rule 31 (expression -> VALORCADENA .)
+    AND             reduce using rule 31 (expression -> VALORCADENA .)
+    OR              reduce using rule 31 (expression -> VALORCADENA .)
+    FINAL           reduce using rule 31 (expression -> VALORCADENA .)
+    PARDER          reduce using rule 31 (expression -> VALORCADENA .)
+
+
+state 39
+
+    (32) expression -> valorbool .
+
+    VALORSUMA       reduce using rule 32 (expression -> valorbool .)
+    VALORRESTA      reduce using rule 32 (expression -> valorbool .)
+    VALORMULT       reduce using rule 32 (expression -> valorbool .)
+    VALORDIV        reduce using rule 32 (expression -> valorbool .)
+    VALOREXP        reduce using rule 32 (expression -> valorbool .)
+    VALOREQUIV      reduce using rule 32 (expression -> valorbool .)
+    VALORNOEQUIV    reduce using rule 32 (expression -> valorbool .)
+    VALORMENOR      reduce using rule 32 (expression -> valorbool .)
+    VALORMEOI       reduce using rule 32 (expression -> valorbool .)
+    VALORMAYOR      reduce using rule 32 (expression -> valorbool .)
+    VALORMAOI       reduce using rule 32 (expression -> valorbool .)
+    AND             reduce using rule 32 (expression -> valorbool .)
+    OR              reduce using rule 32 (expression -> valorbool .)
+    FINAL           reduce using rule 32 (expression -> valorbool .)
+    PARDER          reduce using rule 32 (expression -> valorbool .)
+
+
+state 40
+
+    (33) expression -> PARIZ . expression PARDER
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 71
+    valorbool                      shift and go to state 39
+
+state 41
+
+    (34) expression -> VALORID .
+
+    VALORSUMA       reduce using rule 34 (expression -> VALORID .)
+    VALORRESTA      reduce using rule 34 (expression -> VALORID .)
+    VALORMULT       reduce using rule 34 (expression -> VALORID .)
+    VALORDIV        reduce using rule 34 (expression -> VALORID .)
+    VALOREXP        reduce using rule 34 (expression -> VALORID .)
+    VALOREQUIV      reduce using rule 34 (expression -> VALORID .)
+    VALORNOEQUIV    reduce using rule 34 (expression -> VALORID .)
+    VALORMENOR      reduce using rule 34 (expression -> VALORID .)
+    VALORMEOI       reduce using rule 34 (expression -> VALORID .)
+    VALORMAYOR      reduce using rule 34 (expression -> VALORID .)
+    VALORMAOI       reduce using rule 34 (expression -> VALORID .)
+    AND             reduce using rule 34 (expression -> VALORID .)
+    OR              reduce using rule 34 (expression -> VALORID .)
+    FINAL           reduce using rule 34 (expression -> VALORID .)
+    PARDER          reduce using rule 34 (expression -> VALORID .)
+
+
+state 42
+
+    (37) expression -> VALORRESTA . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 72
+    valorbool                      shift and go to state 39
+
+state 43
+
+    (35) valorbool -> TRUE .
+
+    VALORSUMA       reduce using rule 35 (valorbool -> TRUE .)
+    VALORRESTA      reduce using rule 35 (valorbool -> TRUE .)
+    VALORMULT       reduce using rule 35 (valorbool -> TRUE .)
+    VALORDIV        reduce using rule 35 (valorbool -> TRUE .)
+    VALOREXP        reduce using rule 35 (valorbool -> TRUE .)
+    VALOREQUIV      reduce using rule 35 (valorbool -> TRUE .)
+    VALORNOEQUIV    reduce using rule 35 (valorbool -> TRUE .)
+    VALORMENOR      reduce using rule 35 (valorbool -> TRUE .)
+    VALORMEOI       reduce using rule 35 (valorbool -> TRUE .)
+    VALORMAYOR      reduce using rule 35 (valorbool -> TRUE .)
+    VALORMAOI       reduce using rule 35 (valorbool -> TRUE .)
+    AND             reduce using rule 35 (valorbool -> TRUE .)
+    OR              reduce using rule 35 (valorbool -> TRUE .)
+    FINAL           reduce using rule 35 (valorbool -> TRUE .)
+    PARDER          reduce using rule 35 (valorbool -> TRUE .)
+
+
+state 44
+
+    (36) valorbool -> FALSE .
+
+    VALORSUMA       reduce using rule 36 (valorbool -> FALSE .)
+    VALORRESTA      reduce using rule 36 (valorbool -> FALSE .)
+    VALORMULT       reduce using rule 36 (valorbool -> FALSE .)
+    VALORDIV        reduce using rule 36 (valorbool -> FALSE .)
+    VALOREXP        reduce using rule 36 (valorbool -> FALSE .)
+    VALOREQUIV      reduce using rule 36 (valorbool -> FALSE .)
+    VALORNOEQUIV    reduce using rule 36 (valorbool -> FALSE .)
+    VALORMENOR      reduce using rule 36 (valorbool -> FALSE .)
+    VALORMEOI       reduce using rule 36 (valorbool -> FALSE .)
+    VALORMAYOR      reduce using rule 36 (valorbool -> FALSE .)
+    VALORMAOI       reduce using rule 36 (valorbool -> FALSE .)
+    AND             reduce using rule 36 (valorbool -> FALSE .)
+    OR              reduce using rule 36 (valorbool -> FALSE .)
+    FINAL           reduce using rule 36 (valorbool -> FALSE .)
+    PARDER          reduce using rule 36 (valorbool -> FALSE .)
+
+
+state 45
+
+    (10) if_def -> IF PARIZ . expression PARDER LLAVIZ statement LLAVDER
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 73
+    valorbool                      shift and go to state 39
+
+state 46
+
+    (26) declarar -> tipo VALORID .
+    (28) declarar-asignar -> tipo VALORID . VALORIGUAL expression
+
+    FINAL           reduce using rule 26 (declarar -> tipo VALORID .)
+    VALORIGUAL      shift and go to state 74
+
+
+state 47
+
+    (27) guardar -> VALORID VALORIGUAL . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 75
+    valorbool                      shift and go to state 39
+
+state 48
+
+    (6) statement -> asignacion FINAL statement .
+
+    $end            reduce using rule 6 (statement -> asignacion FINAL statement .)
+    LLAVDER         reduce using rule 6 (statement -> asignacion FINAL statement .)
+
+
+state 49
+
+    (7) statement -> log FINAL statement .
+
+    $end            reduce using rule 7 (statement -> log FINAL statement .)
+    LLAVDER         reduce using rule 7 (statement -> log FINAL statement .)
+
+
+state 50
+
+    (9) condicional -> if_def elseif_def else_def .
+
+    WHILE           reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    DO              reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    FOR             reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    LOG             reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    IF              reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    VALORID         reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    INT             reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    FLOAT           reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    STRING          reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    BOOL            reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    $end            reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+    LLAVDER         reduce using rule 9 (condicional -> if_def elseif_def else_def .)
+
+
+state 51
+
+    (13) else_def -> ELSE . LLAVIZ statement LLAVDER
+
+    LLAVIZ          shift and go to state 76
+
+
+state 52
+
+    (14) else_def -> null .
+
+    WHILE           reduce using rule 14 (else_def -> null .)
+    DO              reduce using rule 14 (else_def -> null .)
+    FOR             reduce using rule 14 (else_def -> null .)
+    LOG             reduce using rule 14 (else_def -> null .)
+    IF              reduce using rule 14 (else_def -> null .)
+    VALORID         reduce using rule 14 (else_def -> null .)
+    INT             reduce using rule 14 (else_def -> null .)
+    FLOAT           reduce using rule 14 (else_def -> null .)
+    STRING          reduce using rule 14 (else_def -> null .)
+    BOOL            reduce using rule 14 (else_def -> null .)
+    $end            reduce using rule 14 (else_def -> null .)
+    LLAVDER         reduce using rule 14 (else_def -> null .)
+
+
+state 53
+
+    (11) elseif_def -> ELSEIF PARIZ . expression PARDER LLAVIZ statement LLAVDER elseif_def
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 77
+    valorbool                      shift and go to state 39
+
+state 54
+
+    (15) loop_while -> WHILE PARIZ expression . PARDER LLAVIZ statement LLAVDER
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    PARDER          shift and go to state 78
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 55
+
+    (16) loop_while -> DO LLAVIZ statement . LLAVDER WHILE PARIZ expression PARDER FINAL
+
+    LLAVDER         shift and go to state 79
+
+
+state 56
+
+    (17) loop_for -> FOR PARIZ declarar-asignar . FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+
+    FINAL           shift and go to state 80
+
+
+state 57
+
+    (28) declarar-asignar -> tipo . VALORID VALORIGUAL expression
+
+    VALORID         shift and go to state 81
+
+
+state 58
+
+    (38) expression -> expression VALORSUMA . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 82
+    valorbool                      shift and go to state 39
+
+state 59
+
+    (39) expression -> expression VALORRESTA . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 83
+    valorbool                      shift and go to state 39
+
+state 60
+
+    (40) expression -> expression VALORMULT . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 84
+    valorbool                      shift and go to state 39
+
+state 61
+
+    (41) expression -> expression VALORDIV . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 85
+    valorbool                      shift and go to state 39
+
+state 62
+
+    (42) expression -> expression VALOREXP . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 86
+    valorbool                      shift and go to state 39
+
+state 63
+
+    (43) expression -> expression VALOREQUIV . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 87
+    valorbool                      shift and go to state 39
+
+state 64
+
+    (44) expression -> expression VALORNOEQUIV . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 88
+    valorbool                      shift and go to state 39
+
+state 65
+
+    (45) expression -> expression VALORMENOR . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 89
+    valorbool                      shift and go to state 39
+
+state 66
+
+    (46) expression -> expression VALORMEOI . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 90
+    valorbool                      shift and go to state 39
+
+state 67
+
+    (47) expression -> expression VALORMAYOR . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 91
+    valorbool                      shift and go to state 39
+
+state 68
+
+    (48) expression -> expression VALORMAOI . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 92
+    valorbool                      shift and go to state 39
+
+state 69
+
+    (49) expression -> expression AND . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 93
+    valorbool                      shift and go to state 39
+
+state 70
+
+    (50) expression -> expression OR . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 94
+    valorbool                      shift and go to state 39
+
+state 71
+
+    (33) expression -> PARIZ expression . PARDER
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    PARDER          shift and go to state 95
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 72
+
+    (37) expression -> VALORRESTA expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALORSUMA       reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALORRESTA      reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALORMULT       reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALORDIV        reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALOREXP        reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALOREQUIV      reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALORNOEQUIV    reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALORMENOR      reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALORMEOI       reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALORMAYOR      reduce using rule 37 (expression -> VALORRESTA expression .)
+    VALORMAOI       reduce using rule 37 (expression -> VALORRESTA expression .)
+    AND             reduce using rule 37 (expression -> VALORRESTA expression .)
+    OR              reduce using rule 37 (expression -> VALORRESTA expression .)
+    FINAL           reduce using rule 37 (expression -> VALORRESTA expression .)
+    PARDER          reduce using rule 37 (expression -> VALORRESTA expression .)
+
+  ! VALORSUMA       [ shift and go to state 58 ]
+  ! VALORRESTA      [ shift and go to state 59 ]
+  ! VALORMULT       [ shift and go to state 60 ]
+  ! VALORDIV        [ shift and go to state 61 ]
+  ! VALOREXP        [ shift and go to state 62 ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 73
+
+    (10) if_def -> IF PARIZ expression . PARDER LLAVIZ statement LLAVDER
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    PARDER          shift and go to state 96
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 74
+
+    (28) declarar-asignar -> tipo VALORID VALORIGUAL . expression
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 97
+    valorbool                      shift and go to state 39
+
+state 75
+
+    (27) guardar -> VALORID VALORIGUAL expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    FINAL           reduce using rule 27 (guardar -> VALORID VALORIGUAL expression .)
+    PARDER          reduce using rule 27 (guardar -> VALORID VALORIGUAL expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 76
+
+    (13) else_def -> ELSE LLAVIZ . statement LLAVDER
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    statement                      shift and go to state 98
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 77
+
+    (11) elseif_def -> ELSEIF PARIZ expression . PARDER LLAVIZ statement LLAVDER elseif_def
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    PARDER          shift and go to state 99
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 78
+
+    (15) loop_while -> WHILE PARIZ expression PARDER . LLAVIZ statement LLAVDER
+
+    LLAVIZ          shift and go to state 100
+
+
+state 79
+
+    (16) loop_while -> DO LLAVIZ statement LLAVDER . WHILE PARIZ expression PARDER FINAL
+
+    WHILE           shift and go to state 101
+
+
+state 80
+
+    (17) loop_for -> FOR PARIZ declarar-asignar FINAL . expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 102
+    valorbool                      shift and go to state 39
+
+state 81
+
+    (28) declarar-asignar -> tipo VALORID . VALORIGUAL expression
+
+    VALORIGUAL      shift and go to state 74
+
+
+state 82
+
+    (38) expression -> expression VALORSUMA expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALORSUMA       reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    VALORRESTA      reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    VALOREQUIV      reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    VALORNOEQUIV    reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    VALORMENOR      reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    VALORMEOI       reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    VALORMAYOR      reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    VALORMAOI       reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    AND             reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    OR              reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    FINAL           reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    PARDER          reduce using rule 38 (expression -> expression VALORSUMA expression .)
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+
+  ! VALORMULT       [ reduce using rule 38 (expression -> expression VALORSUMA expression .) ]
+  ! VALORDIV        [ reduce using rule 38 (expression -> expression VALORSUMA expression .) ]
+  ! VALOREXP        [ reduce using rule 38 (expression -> expression VALORSUMA expression .) ]
+  ! VALORSUMA       [ shift and go to state 58 ]
+  ! VALORRESTA      [ shift and go to state 59 ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 83
+
+    (39) expression -> expression VALORRESTA expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALORSUMA       reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    VALORRESTA      reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    VALOREQUIV      reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    VALORNOEQUIV    reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    VALORMENOR      reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    VALORMEOI       reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    VALORMAYOR      reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    VALORMAOI       reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    AND             reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    OR              reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    FINAL           reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    PARDER          reduce using rule 39 (expression -> expression VALORRESTA expression .)
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+
+  ! VALORMULT       [ reduce using rule 39 (expression -> expression VALORRESTA expression .) ]
+  ! VALORDIV        [ reduce using rule 39 (expression -> expression VALORRESTA expression .) ]
+  ! VALOREXP        [ reduce using rule 39 (expression -> expression VALORRESTA expression .) ]
+  ! VALORSUMA       [ shift and go to state 58 ]
+  ! VALORRESTA      [ shift and go to state 59 ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 84
+
+    (40) expression -> expression VALORMULT expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALORSUMA       reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALORRESTA      reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALORMULT       reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALORDIV        reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALOREQUIV      reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALORNOEQUIV    reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALORMENOR      reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALORMEOI       reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALORMAYOR      reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALORMAOI       reduce using rule 40 (expression -> expression VALORMULT expression .)
+    AND             reduce using rule 40 (expression -> expression VALORMULT expression .)
+    OR              reduce using rule 40 (expression -> expression VALORMULT expression .)
+    FINAL           reduce using rule 40 (expression -> expression VALORMULT expression .)
+    PARDER          reduce using rule 40 (expression -> expression VALORMULT expression .)
+    VALOREXP        shift and go to state 62
+
+  ! VALOREXP        [ reduce using rule 40 (expression -> expression VALORMULT expression .) ]
+  ! VALORSUMA       [ shift and go to state 58 ]
+  ! VALORRESTA      [ shift and go to state 59 ]
+  ! VALORMULT       [ shift and go to state 60 ]
+  ! VALORDIV        [ shift and go to state 61 ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 85
+
+    (41) expression -> expression VALORDIV expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALORSUMA       reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALORRESTA      reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALORMULT       reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALORDIV        reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALOREQUIV      reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALORNOEQUIV    reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALORMENOR      reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALORMEOI       reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALORMAYOR      reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALORMAOI       reduce using rule 41 (expression -> expression VALORDIV expression .)
+    AND             reduce using rule 41 (expression -> expression VALORDIV expression .)
+    OR              reduce using rule 41 (expression -> expression VALORDIV expression .)
+    FINAL           reduce using rule 41 (expression -> expression VALORDIV expression .)
+    PARDER          reduce using rule 41 (expression -> expression VALORDIV expression .)
+    VALOREXP        shift and go to state 62
+
+  ! VALOREXP        [ reduce using rule 41 (expression -> expression VALORDIV expression .) ]
+  ! VALORSUMA       [ shift and go to state 58 ]
+  ! VALORRESTA      [ shift and go to state 59 ]
+  ! VALORMULT       [ shift and go to state 60 ]
+  ! VALORDIV        [ shift and go to state 61 ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 86
+
+    (42) expression -> expression VALOREXP expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALORSUMA       reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALORRESTA      reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALORMULT       reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALORDIV        reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALOREXP        reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALOREQUIV      reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALORNOEQUIV    reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALORMENOR      reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALORMEOI       reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALORMAYOR      reduce using rule 42 (expression -> expression VALOREXP expression .)
+    VALORMAOI       reduce using rule 42 (expression -> expression VALOREXP expression .)
+    AND             reduce using rule 42 (expression -> expression VALOREXP expression .)
+    OR              reduce using rule 42 (expression -> expression VALOREXP expression .)
+    FINAL           reduce using rule 42 (expression -> expression VALOREXP expression .)
+    PARDER          reduce using rule 42 (expression -> expression VALOREXP expression .)
+
+  ! VALORSUMA       [ shift and go to state 58 ]
+  ! VALORRESTA      [ shift and go to state 59 ]
+  ! VALORMULT       [ shift and go to state 60 ]
+  ! VALORDIV        [ shift and go to state 61 ]
+  ! VALOREXP        [ shift and go to state 62 ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 87
+
+    (43) expression -> expression VALOREQUIV expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALOREQUIV      reduce using rule 43 (expression -> expression VALOREQUIV expression .)
+    VALORNOEQUIV    reduce using rule 43 (expression -> expression VALOREQUIV expression .)
+    AND             reduce using rule 43 (expression -> expression VALOREQUIV expression .)
+    OR              reduce using rule 43 (expression -> expression VALOREQUIV expression .)
+    FINAL           reduce using rule 43 (expression -> expression VALOREQUIV expression .)
+    PARDER          reduce using rule 43 (expression -> expression VALOREQUIV expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+
+  ! VALORSUMA       [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALORRESTA      [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALORMULT       [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALORDIV        [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALOREXP        [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALORMENOR      [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALORMEOI       [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALORMAYOR      [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALORMAOI       [ reduce using rule 43 (expression -> expression VALOREQUIV expression .) ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 88
+
+    (44) expression -> expression VALORNOEQUIV expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALOREQUIV      reduce using rule 44 (expression -> expression VALORNOEQUIV expression .)
+    VALORNOEQUIV    reduce using rule 44 (expression -> expression VALORNOEQUIV expression .)
+    AND             reduce using rule 44 (expression -> expression VALORNOEQUIV expression .)
+    OR              reduce using rule 44 (expression -> expression VALORNOEQUIV expression .)
+    FINAL           reduce using rule 44 (expression -> expression VALORNOEQUIV expression .)
+    PARDER          reduce using rule 44 (expression -> expression VALORNOEQUIV expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+
+  ! VALORSUMA       [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALORRESTA      [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALORMULT       [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALORDIV        [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALOREXP        [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALORMENOR      [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALORMEOI       [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALORMAYOR      [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALORMAOI       [ reduce using rule 44 (expression -> expression VALORNOEQUIV expression .) ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 89
+
+    (45) expression -> expression VALORMENOR expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALOREQUIV      reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    VALORNOEQUIV    reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    VALORMENOR      reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    VALORMEOI       reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    VALORMAYOR      reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    VALORMAOI       reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    AND             reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    OR              reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    FINAL           reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    PARDER          reduce using rule 45 (expression -> expression VALORMENOR expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+
+  ! VALORSUMA       [ reduce using rule 45 (expression -> expression VALORMENOR expression .) ]
+  ! VALORRESTA      [ reduce using rule 45 (expression -> expression VALORMENOR expression .) ]
+  ! VALORMULT       [ reduce using rule 45 (expression -> expression VALORMENOR expression .) ]
+  ! VALORDIV        [ reduce using rule 45 (expression -> expression VALORMENOR expression .) ]
+  ! VALOREXP        [ reduce using rule 45 (expression -> expression VALORMENOR expression .) ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 90
+
+    (46) expression -> expression VALORMEOI expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALOREQUIV      reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    VALORNOEQUIV    reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    VALORMENOR      reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    VALORMEOI       reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    VALORMAYOR      reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    VALORMAOI       reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    AND             reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    OR              reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    FINAL           reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    PARDER          reduce using rule 46 (expression -> expression VALORMEOI expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+
+  ! VALORSUMA       [ reduce using rule 46 (expression -> expression VALORMEOI expression .) ]
+  ! VALORRESTA      [ reduce using rule 46 (expression -> expression VALORMEOI expression .) ]
+  ! VALORMULT       [ reduce using rule 46 (expression -> expression VALORMEOI expression .) ]
+  ! VALORDIV        [ reduce using rule 46 (expression -> expression VALORMEOI expression .) ]
+  ! VALOREXP        [ reduce using rule 46 (expression -> expression VALORMEOI expression .) ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 91
+
+    (47) expression -> expression VALORMAYOR expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALOREQUIV      reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    VALORNOEQUIV    reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    VALORMENOR      reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    VALORMEOI       reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    VALORMAYOR      reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    VALORMAOI       reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    AND             reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    OR              reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    FINAL           reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    PARDER          reduce using rule 47 (expression -> expression VALORMAYOR expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+
+  ! VALORSUMA       [ reduce using rule 47 (expression -> expression VALORMAYOR expression .) ]
+  ! VALORRESTA      [ reduce using rule 47 (expression -> expression VALORMAYOR expression .) ]
+  ! VALORMULT       [ reduce using rule 47 (expression -> expression VALORMAYOR expression .) ]
+  ! VALORDIV        [ reduce using rule 47 (expression -> expression VALORMAYOR expression .) ]
+  ! VALOREXP        [ reduce using rule 47 (expression -> expression VALORMAYOR expression .) ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 92
+
+    (48) expression -> expression VALORMAOI expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    VALOREQUIV      reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    VALORNOEQUIV    reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    VALORMENOR      reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    VALORMEOI       reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    VALORMAYOR      reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    VALORMAOI       reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    AND             reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    OR              reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    FINAL           reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    PARDER          reduce using rule 48 (expression -> expression VALORMAOI expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+
+  ! VALORSUMA       [ reduce using rule 48 (expression -> expression VALORMAOI expression .) ]
+  ! VALORRESTA      [ reduce using rule 48 (expression -> expression VALORMAOI expression .) ]
+  ! VALORMULT       [ reduce using rule 48 (expression -> expression VALORMAOI expression .) ]
+  ! VALORDIV        [ reduce using rule 48 (expression -> expression VALORMAOI expression .) ]
+  ! VALOREXP        [ reduce using rule 48 (expression -> expression VALORMAOI expression .) ]
+  ! VALOREQUIV      [ shift and go to state 63 ]
+  ! VALORNOEQUIV    [ shift and go to state 64 ]
+  ! VALORMENOR      [ shift and go to state 65 ]
+  ! VALORMEOI       [ shift and go to state 66 ]
+  ! VALORMAYOR      [ shift and go to state 67 ]
+  ! VALORMAOI       [ shift and go to state 68 ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 93
+
+    (49) expression -> expression AND expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    AND             reduce using rule 49 (expression -> expression AND expression .)
+    OR              reduce using rule 49 (expression -> expression AND expression .)
+    FINAL           reduce using rule 49 (expression -> expression AND expression .)
+    PARDER          reduce using rule 49 (expression -> expression AND expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+
+  ! VALORSUMA       [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALORRESTA      [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALORMULT       [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALORDIV        [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALOREXP        [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALOREQUIV      [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALORNOEQUIV    [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALORMENOR      [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALORMEOI       [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALORMAYOR      [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! VALORMAOI       [ reduce using rule 49 (expression -> expression AND expression .) ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 94
+
+    (50) expression -> expression OR expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    AND             reduce using rule 50 (expression -> expression OR expression .)
+    OR              reduce using rule 50 (expression -> expression OR expression .)
+    FINAL           reduce using rule 50 (expression -> expression OR expression .)
+    PARDER          reduce using rule 50 (expression -> expression OR expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+
+  ! VALORSUMA       [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALORRESTA      [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALORMULT       [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALORDIV        [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALOREXP        [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALOREQUIV      [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALORNOEQUIV    [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALORMENOR      [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALORMEOI       [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALORMAYOR      [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! VALORMAOI       [ reduce using rule 50 (expression -> expression OR expression .) ]
+  ! AND             [ shift and go to state 69 ]
+  ! OR              [ shift and go to state 70 ]
+
+
+state 95
+
+    (33) expression -> PARIZ expression PARDER .
+
+    VALORSUMA       reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALORRESTA      reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALORMULT       reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALORDIV        reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALOREXP        reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALOREQUIV      reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALORNOEQUIV    reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALORMENOR      reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALORMEOI       reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALORMAYOR      reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    VALORMAOI       reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    AND             reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    OR              reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    FINAL           reduce using rule 33 (expression -> PARIZ expression PARDER .)
+    PARDER          reduce using rule 33 (expression -> PARIZ expression PARDER .)
+
+
+state 96
+
+    (10) if_def -> IF PARIZ expression PARDER . LLAVIZ statement LLAVDER
+
+    LLAVIZ          shift and go to state 103
+
+
+state 97
+
+    (28) declarar-asignar -> tipo VALORID VALORIGUAL expression .
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    FINAL           reduce using rule 28 (declarar-asignar -> tipo VALORID VALORIGUAL expression .)
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 98
+
+    (13) else_def -> ELSE LLAVIZ statement . LLAVDER
+
+    LLAVDER         shift and go to state 104
+
+
+state 99
+
+    (11) elseif_def -> ELSEIF PARIZ expression PARDER . LLAVIZ statement LLAVDER elseif_def
+
+    LLAVIZ          shift and go to state 105
+
+
+state 100
+
+    (15) loop_while -> WHILE PARIZ expression PARDER LLAVIZ . statement LLAVDER
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    statement                      shift and go to state 106
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 101
+
+    (16) loop_while -> DO LLAVIZ statement LLAVDER WHILE . PARIZ expression PARDER FINAL
+
+    PARIZ           shift and go to state 107
+
+
+state 102
+
+    (17) loop_for -> FOR PARIZ declarar-asignar FINAL expression . FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    FINAL           shift and go to state 108
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 103
+
+    (10) if_def -> IF PARIZ expression PARDER LLAVIZ . statement LLAVDER
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    statement                      shift and go to state 109
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 104
+
+    (13) else_def -> ELSE LLAVIZ statement LLAVDER .
+
+    WHILE           reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    DO              reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    FOR             reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    LOG             reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    IF              reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    VALORID         reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    INT             reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    FLOAT           reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    STRING          reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    BOOL            reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    $end            reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+    LLAVDER         reduce using rule 13 (else_def -> ELSE LLAVIZ statement LLAVDER .)
+
+
+state 105
+
+    (11) elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ . statement LLAVDER elseif_def
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    statement                      shift and go to state 110
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 106
+
+    (15) loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement . LLAVDER
+
+    LLAVDER         shift and go to state 111
+
+
+state 107
+
+    (16) loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ . expression PARDER FINAL
+    (29) expression -> . VALORINT
+    (30) expression -> . VALORFLOAT
+    (31) expression -> . VALORCADENA
+    (32) expression -> . valorbool
+    (33) expression -> . PARIZ expression PARDER
+    (34) expression -> . VALORID
+    (37) expression -> . VALORRESTA expression
+    (38) expression -> . expression VALORSUMA expression
+    (39) expression -> . expression VALORRESTA expression
+    (40) expression -> . expression VALORMULT expression
+    (41) expression -> . expression VALORDIV expression
+    (42) expression -> . expression VALOREXP expression
+    (43) expression -> . expression VALOREQUIV expression
+    (44) expression -> . expression VALORNOEQUIV expression
+    (45) expression -> . expression VALORMENOR expression
+    (46) expression -> . expression VALORMEOI expression
+    (47) expression -> . expression VALORMAYOR expression
+    (48) expression -> . expression VALORMAOI expression
+    (49) expression -> . expression AND expression
+    (50) expression -> . expression OR expression
+    (35) valorbool -> . TRUE
+    (36) valorbool -> . FALSE
+
+    VALORINT        shift and go to state 36
+    VALORFLOAT      shift and go to state 37
+    VALORCADENA     shift and go to state 38
+    PARIZ           shift and go to state 40
+    VALORID         shift and go to state 41
+    VALORRESTA      shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+
+    expression                     shift and go to state 112
+    valorbool                      shift and go to state 39
+
+state 108
+
+    (17) loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL . guardar PARDER LLAVIZ statement LLAVDER
+    (27) guardar -> . VALORID VALORIGUAL expression
+
+    VALORID         shift and go to state 19
+
+    guardar                        shift and go to state 113
+
+state 109
+
+    (10) if_def -> IF PARIZ expression PARDER LLAVIZ statement . LLAVDER
+
+    LLAVDER         shift and go to state 114
+
+
+state 110
+
+    (11) elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement . LLAVDER elseif_def
+
+    LLAVDER         shift and go to state 115
+
+
+state 111
+
+    (15) loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .
+
+    WHILE           reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    DO              reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    FOR             reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    LOG             reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    IF              reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    VALORID         reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    INT             reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    FLOAT           reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    STRING          reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    BOOL            reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    $end            reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    LLAVDER         reduce using rule 15 (loop_while -> WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+
+
+state 112
+
+    (16) loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression . PARDER FINAL
+    (38) expression -> expression . VALORSUMA expression
+    (39) expression -> expression . VALORRESTA expression
+    (40) expression -> expression . VALORMULT expression
+    (41) expression -> expression . VALORDIV expression
+    (42) expression -> expression . VALOREXP expression
+    (43) expression -> expression . VALOREQUIV expression
+    (44) expression -> expression . VALORNOEQUIV expression
+    (45) expression -> expression . VALORMENOR expression
+    (46) expression -> expression . VALORMEOI expression
+    (47) expression -> expression . VALORMAYOR expression
+    (48) expression -> expression . VALORMAOI expression
+    (49) expression -> expression . AND expression
+    (50) expression -> expression . OR expression
+
+    PARDER          shift and go to state 116
+    VALORSUMA       shift and go to state 58
+    VALORRESTA      shift and go to state 59
+    VALORMULT       shift and go to state 60
+    VALORDIV        shift and go to state 61
+    VALOREXP        shift and go to state 62
+    VALOREQUIV      shift and go to state 63
+    VALORNOEQUIV    shift and go to state 64
+    VALORMENOR      shift and go to state 65
+    VALORMEOI       shift and go to state 66
+    VALORMAYOR      shift and go to state 67
+    VALORMAOI       shift and go to state 68
+    AND             shift and go to state 69
+    OR              shift and go to state 70
+
+
+state 113
+
+    (17) loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar . PARDER LLAVIZ statement LLAVDER
+
+    PARDER          shift and go to state 117
+
+
+state 114
+
+    (10) if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .
+
+    ELSEIF          reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    ELSE            reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    WHILE           reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    DO              reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    FOR             reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    LOG             reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    IF              reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    VALORID         reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    INT             reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    FLOAT           reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    STRING          reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    BOOL            reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    $end            reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+    LLAVDER         reduce using rule 10 (if_def -> IF PARIZ expression PARDER LLAVIZ statement LLAVDER .)
+
+
+state 115
+
+    (11) elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER . elseif_def
+    (11) elseif_def -> . ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def
+    (12) elseif_def -> . null
+    (2) null -> .
+
+    ELSEIF          shift and go to state 30
+    ELSE            reduce using rule 2 (null -> .)
+    WHILE           reduce using rule 2 (null -> .)
+    DO              reduce using rule 2 (null -> .)
+    FOR             reduce using rule 2 (null -> .)
+    LOG             reduce using rule 2 (null -> .)
+    IF              reduce using rule 2 (null -> .)
+    VALORID         reduce using rule 2 (null -> .)
+    INT             reduce using rule 2 (null -> .)
+    FLOAT           reduce using rule 2 (null -> .)
+    STRING          reduce using rule 2 (null -> .)
+    BOOL            reduce using rule 2 (null -> .)
+    $end            reduce using rule 2 (null -> .)
+    LLAVDER         reduce using rule 2 (null -> .)
+
+    elseif_def                     shift and go to state 118
+    null                           shift and go to state 31
+
+state 116
+
+    (16) loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER . FINAL
+
+    FINAL           shift and go to state 119
+
+
+state 117
+
+    (17) loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER . LLAVIZ statement LLAVDER
+
+    LLAVIZ          shift and go to state 120
+
+
+state 118
+
+    (11) elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .
+
+    ELSE            reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    WHILE           reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    DO              reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    FOR             reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    LOG             reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    IF              reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    VALORID         reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    INT             reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    FLOAT           reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    STRING          reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    BOOL            reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    $end            reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+    LLAVDER         reduce using rule 11 (elseif_def -> ELSEIF PARIZ expression PARDER LLAVIZ statement LLAVDER elseif_def .)
+
+
+state 119
+
+    (16) loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .
+
+    WHILE           reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    DO              reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    FOR             reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    LOG             reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    IF              reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    VALORID         reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    INT             reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    FLOAT           reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    STRING          reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    BOOL            reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    $end            reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+    LLAVDER         reduce using rule 16 (loop_while -> DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL .)
+
+
+state 120
+
+    (17) loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ . statement LLAVDER
+    (3) statement -> . condicional statement
+    (4) statement -> . loop_while statement
+    (5) statement -> . loop_for statement
+    (6) statement -> . asignacion FINAL statement
+    (7) statement -> . log FINAL statement
+    (8) statement -> . null
+    (9) condicional -> . if_def elseif_def else_def
+    (15) loop_while -> . WHILE PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (16) loop_while -> . DO LLAVIZ statement LLAVDER WHILE PARIZ expression PARDER FINAL
+    (17) loop_for -> . FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER
+    (23) asignacion -> . declarar
+    (24) asignacion -> . declarar-asignar
+    (25) asignacion -> . guardar
+    (22) log -> . LOG expression
+    (2) null -> .
+    (10) if_def -> . IF PARIZ expression PARDER LLAVIZ statement LLAVDER
+    (26) declarar -> . tipo VALORID
+    (28) declarar-asignar -> . tipo VALORID VALORIGUAL expression
+    (27) guardar -> . VALORID VALORIGUAL expression
+    (18) tipo -> . INT
+    (19) tipo -> . FLOAT
+    (20) tipo -> . STRING
+    (21) tipo -> . BOOL
+
+    WHILE           shift and go to state 10
+    DO              shift and go to state 11
+    FOR             shift and go to state 12
+    LOG             shift and go to state 16
+    LLAVDER         reduce using rule 2 (null -> .)
+    IF              shift and go to state 17
+    VALORID         shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    STRING          shift and go to state 22
+    BOOL            shift and go to state 23
+
+    declarar-asignar               shift and go to state 13
+    guardar                        shift and go to state 14
+    statement                      shift and go to state 121
+    condicional                    shift and go to state 3
+    loop_while                     shift and go to state 4
+    loop_for                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    log                            shift and go to state 7
+    null                           shift and go to state 8
+    if_def                         shift and go to state 9
+    declarar                       shift and go to state 15
+    tipo                           shift and go to state 18
+
+state 121
+
+    (17) loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement . LLAVDER
+
+    LLAVDER         shift and go to state 122
+
+
+state 122
+
+    (17) loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .
+
+    WHILE           reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    DO              reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    FOR             reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    LOG             reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    IF              reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    VALORID         reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    INT             reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    FLOAT           reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    STRING          reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    BOOL            reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    $end            reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+    LLAVDER         reduce using rule 17 (loop_for -> FOR PARIZ declarar-asignar FINAL expression FINAL guardar PARDER LLAVIZ statement LLAVDER .)
+
