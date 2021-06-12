@@ -222,7 +222,7 @@ def p_declararAsignar(p):
     '''
     declarar-asignar : tipo VALORID VALORIGUAL expression
     '''
-    p[0] = ('declarar-guardar', p[2], p[4])
+    p[0] = ('declarar-guardar',p[1], p[2], p[4])
 
 def p_expressionNumero(p):
     '''
@@ -293,6 +293,94 @@ file = open("file.txt", "r")
 s = file.read()
 yacc.parse(s)
 
-print("++++++++++++++++ Arbol ++++++++++++++++\n")
-print(arbol)
-print("\n++++++++++++++++++++++++++++++++++++++\n")
+print("\n+++++++++++++++++++++++++++++ Arbol ++++++++++++++++++++++++++++++++++++++\n")
+
+for tupla in arbol:
+    print(tupla)
+
+print("\n+++++++++++++++++++++++++++++ 3 Address Code +++++++++++++++++++++++++++++\n")
+
+token = -1
+checkpoint = -1
+
+def generadorCheckpoint():
+    global checkpoint
+    checkpoint += 1
+    return "CHECKPOINT" + str(checkpoint)
+
+
+def generadorToken():
+    global token
+    token += 1
+    return "TOKEN" + str(token)
+
+
+def generarCodigoIntermedio(tupla):
+    if tupla[0] == 'declarar':
+        print ("crear",tupla[1],tupla[2])
+    elif tupla[0] == 'guardar':
+        tupla2 = tupla[2]
+        if type(tupla[2]) is tuple:
+            tupla2 = generarCodigoIntermedio(tupla[2])
+        print(tupla[1],"=",tupla2)
+    elif tupla[0] == 'declarar-guardar':
+        tupla3 = tupla[3]
+        if type(tupla3) is tuple:
+            tupla3=generarCodigoIntermedio(tupla[3])
+        print(tupla[1]+"Crear",tupla[2],tupla3)
+        return tupla[1]+'Crear:'+str(tupla[2])+'='+str(tupla3)
+    elif tupla[0] == 'operacion':
+        t = generadorToken()
+        print(t,'=',tupla[1],tupla[2],tupla[3])
+        return t
+    elif tupla[0] == 'log':
+        tupla1 = tupla[1]
+        if type(tupla1) is tuple:
+            tupla1=generarCodigoIntermedio(tupla[1])
+        print('log',tupla1)
+    elif tupla[0] == 'do-while':
+        checkpoint1 = generadorCheckpoint()
+        print(checkpoint1)
+        tupla2 = generarCodigoIntermedio(tupla[2][0])
+        tupla1 = tupla[1]
+        if type(tupla1) is tuple:
+            tupla1 = generarCodigoIntermedio(tupla[1])
+        print('doWhile',tupla1,'return'+checkpoint1)
+    elif tupla[0] == 'while':
+        checkpoint1 = generadorCheckpoint()
+        tupla1 = tupla[1]
+        if type(tupla1) is tuple:
+            tupla1 = generarCodigoIntermedio(tupla[1])
+        print('whileNot',tupla1,'return'+checkpoint1)
+        tupla2 = generarCodigoIntermedio(tupla[2])
+        print(checkpoint1)
+    elif tupla[0] == 'for':
+        tupla1 = generarCodigoIntermedio(tupla[1])
+        checkpoint1 = generadorCheckpoint()
+        print(checkpoint1)
+        tupla3 = generarCodigoIntermedio(tupla[3])
+        generarCodigoIntermedio(tupla[4])
+        tupla2 = generarCodigoIntermedio(tupla[2])
+        print('if',tupla2,'return'+checkpoint1)
+    elif tupla[0] == 'condicional':
+        checkpoint1 = generadorCheckpoint()
+        tupla1 = generarCodigoIntermedio(tupla[1][1])
+        print('ifNot',tupla1,'go'+checkpoint1)
+        tupla2 = generarCodigoIntermedio(tupla[1][2])
+        print(checkpoint1)
+        if len(tupla[2]) == 0:
+            return
+        checkpoint2 = generadorCheckpoint()
+        tupla3 = generarCodigoIntermedio(tupla[2][0][1])
+        print('ifNot',tupla3,'go'+checkpoint2)
+        generarCodigoIntermedio(tupla[2][0][2])
+        print(checkpoint2)
+        if tupla[3] == None:
+            return
+        generarCodigoIntermedio(tupla[3][1])
+    else:
+        generarCodigoIntermedio(tupla[0])
+
+for i in arbol:
+    generarCodigoIntermedio(i)
+print("\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")
